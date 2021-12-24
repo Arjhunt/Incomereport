@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Sidebar from './Sidebar'
+import Topbar from './Topbar'
+import Dashboard from './Dashboard'
+import Card from './Card'
+
+import { render } from "react-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import Tables from './Tables'
+import Incomereport from './Incomereport'
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div id="wrapper">
+    <BrowserRouter>
+      <Sidebar />
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <Topbar />
+          <div class="container-fluid">
+            <Routes>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/Expenditure" element={<Tables/>} />
+              <Route path="/Incomereport" element={<Incomereport/>} />
+            </Routes>
+          </div>
+        </div>
+      </div>
+    </BrowserRouter>
+  </div>
+
+  )
+
 }
 
-export default App;
+export default App
+
+
